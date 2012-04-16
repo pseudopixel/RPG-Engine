@@ -32,6 +32,14 @@ public class Window {
 		} catch (LWJGLException e) {
 			e.printStackTrace();
 		}
+		setupGL();
+	}
+	
+	public void reset() {
+		construct();
+	}
+	public void setupGL() {
+		GL11.glOrtho(0, WIDTH, HEIGHT, 0, 1, -1);
 	}
 	
 	public String getTitle() {
