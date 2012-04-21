@@ -1,6 +1,7 @@
 package util;
 
-public class Vector2d {	private double x, y;
+public class Vector2d {	
+	private double x, y;
 	
 	public Vector2d(double x, double y) {
 		this.x = x;
@@ -30,5 +31,10 @@ public class Vector2d {	private double x, y;
 	public void set(double x, double y) {
 		this.x = x;
 		this.y = y;
+	}
+
+	public void set(Vector2d vec) {
+		this.x = vec.getX();
+		this.y = vec.getY();
 	}
 }

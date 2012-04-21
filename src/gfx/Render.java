@@ -20,16 +20,16 @@ public class Render {
 	public static void render() {
 		for(Quad q : queue) {
 			q.getSprite().getTex().bind();
-			
+	
 			GL11.glBegin(GL11.GL_QUADS);
 				GL11.glTexCoord2f(0, 0);
 				GL11.glVertex2d(q.getVec().getX(), q.getVec().getY());
 				GL11.glTexCoord2f(1, 0);
-				GL11.glVertex2d(q.getVec().getX() + q.getSprite().getTex().getTextureWidth(), q.getVec().getY());
+				GL11.glVertex2d(q.getVec().getX() + (q.getSprite().getTex().getTextureWidth() * 2), q.getVec().getY());
 				GL11.glTexCoord2f(1, 1);
-				GL11.glVertex2d(q.getVec().getX() + q.getSprite().getTex().getTextureWidth(), q.getVec().getY() + q.getSprite().getTex().getTextureHeight());
+				GL11.glVertex2d(q.getVec().getX() + (q.getSprite().getTex().getTextureWidth() * 2), q.getVec().getY() + (q.getSprite().getTex().getTextureHeight() * 2));
 				GL11.glTexCoord2f(0, 1);
-				GL11.glVertex2d(q.getVec().getX(), q.getVec().getY() + q.getSprite().getTex().getTextureHeight());
+				GL11.glVertex2d(q.getVec().getX(), q.getVec().getY() + (q.getSprite().getTex().getTextureHeight() * 2));
 			GL11.glEnd();
 		}
 	}
