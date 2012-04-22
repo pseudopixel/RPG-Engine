@@ -15,6 +15,8 @@ public class Render {
 		
 		GL11.glOrtho(0, window.WIDTH, window.HEIGHT, 0, -1, 1);
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 	}
 	
 	public static void render() {

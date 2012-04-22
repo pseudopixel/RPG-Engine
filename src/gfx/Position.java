@@ -12,9 +12,9 @@ public class Position {
 		this.position = new Vector2d(Math.floor(v2d.getX() / MULTIPLIER), Math.floor(v2d.getY() / MULTIPLIER)); 
 	}
 	
-	public Position(int x, int y) {
-		this.vector = new Vector2d(x * MULTIPLIER, y * MULTIPLIER);
-		this.position = new Vector2d(x, y);
+	public Position(double d, double e) {
+		this.vector = new Vector2d(d * MULTIPLIER, e * MULTIPLIER);
+		this.position = new Vector2d(d, e);
 	}
 	
 	public Vector2d asVector() {

@@ -8,42 +8,41 @@ import gfx.Sprite;
 import gfx.Window;
 import io.TextureManager;
 
-import org.lwjgl.input.Keyboard;
+import java.awt.Font;
+
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
+import org.newdawn.slick.TrueTypeFont;
 
 import util.Vector2d;
 
+@SuppressWarnings("deprecation")
 public class Main {
 	public static final double VERSION = 0.1;
+	public static String str = "TEST STRING: ";
+	public static Quad quad;
+	public static State cur = State.TYPING;
 
 	public static void main(String[] args) {
 		Window window = new Window("Editor v"+ VERSION, 1280, 720, 60);
 		GameContainer gc = new GameContainer(window);
 
 		new Render(window);
-		Quad quad = new Quad(new Vector2d(100, 100), new Sprite(TextureManager.load("C:/Users/EXE/Desktop/testSprite.png")));
+		quad = new Quad(new Vector2d(100, 100), new Sprite(TextureManager.load("C:/Users/EXE/Desktop/testSprite.png")));
 		Render.queue.add(quad);
+		TrueTypeFont ttf = new TrueTypeFont(new Font("serif", 0, 20), false);
 
 		while(!Display.isCloseRequested()) {
 			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
-			InputManager.update();
+			InputManager.update(cur);
+			if(cur == State.TYPING && (Mouse.isButtonDown(0) || Mouse.isButtonDown(1))) cur = State.EDITING_MAP;
 			quad.getVec().set(Position.vector2dToPosition(new Vector2d(Mouse.getX(), (window.HEIGHT - Mouse.getY()))));
-			if(Mouse.isButtonDown(0) || Mouse.isButtonDown(1)) {
-				Quad q = new Quad(Position.vector2dToPosition(new Vector2d(Mouse.getX(), (window.HEIGHT - Mouse.getY()))), new Sprite(TextureManager.load("C:/Users/EXE/Desktop/testSprite.png")));
-				if(!Map.check(new Position(q.getVec()).get())) {
-					Render.queue.add(q);
-					Map.positions.add(new Position(q.getVec()));
-				}
-			}
-			if(Keyboard.isKeyDown(Keyboard.KEY_R)) {
-				Render.queue.clear();
-				Render.queue.add(quad);
-			}
-			if(InputManager.z && Render.queue.size() > 1) Render.queue.remove(Render.queue.size()-1);
 			Render.render();
+			ttf.drawString(0, 0, str);
 			gc.update();
 		}
+		
+		gc.cleanup();
 	}
 }
