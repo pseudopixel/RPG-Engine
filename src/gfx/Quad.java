@@ -18,4 +18,8 @@ public class Quad {
 	public Sprite getSprite() {
 		return sprite;
 	}
+	
+	public void setPosition(Vector2d vec) {
+		this.vec = vec;
+	}
 }
