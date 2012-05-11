@@ -2,6 +2,7 @@ package gfx;
 
 import org.lwjgl.opengl.Display;
 
+
 public class GameContainer {
 	Window window;
 	public GameContainer(Window window) {

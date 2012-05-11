@@ -13,7 +13,7 @@ public class Map {
 	
 	public static void initialize() {
 		for(Position p : positions) {
-			Render.quadQueue.add(new Quad(p.asVector(), new Sprite(TextureManager.load("C:/Users/EXE/Desktop/testSprite.png"))));
+			Render.gameQueue.add(new Quad(p.asVector(), new Sprite(TextureManager.load("C:/Users/EXE/Desktop/testSprite.png"))));
 		}
 	}
 	

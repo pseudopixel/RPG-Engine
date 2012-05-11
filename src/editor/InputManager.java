@@ -3,6 +3,7 @@ package editor;
 import org.lwjgl.input.Keyboard;
 
 
+
 public abstract class InputManager {
 	public static Key[] keys = {
 	new Key("a", Keyboard.KEY_A),

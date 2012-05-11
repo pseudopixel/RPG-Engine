@@ -4,6 +4,9 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
+import util.CLogger;
+
+
 public class Window {
 	public final String TITLE;
 	public final int WIDTH, HEIGHT;

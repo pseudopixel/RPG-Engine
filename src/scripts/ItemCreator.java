@@ -35,7 +35,7 @@ public class ItemCreator {
 	}
 	
 	public static void save() throws IOException {
-		File f = new File("C:/Users/EXE/Desktop/items.dat");
+		File f = new File("C:/Users/EXE/Desktop/items.xml");
 		f.createNewFile();
 		FileWriter fw = new FileWriter(f);
 		BufferedWriter bw = new BufferedWriter(fw);

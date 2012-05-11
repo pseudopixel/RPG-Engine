@@ -9,7 +9,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import model.Item;
-import model.ItemDefinitions;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -32,44 +31,20 @@ public class ItemLoader {
 			doc.getDocumentElement().normalize();
 						
 			NodeList listOfItems = doc.getElementsByTagName("item");
-						
+			
 			for(int i = 0; i < listOfItems.getLength(); i++) {
-				Node item = listOfItems.item(i);
+				Node firstItemNode = listOfItems.item(i);
 				
-				if(item.getNodeType() == Node.ELEMENT_NODE) {
-					Element itemNode = (Element) item;
+				if(firstItemNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element firstItemElement = (Element) firstItemNode;
 					
-					NodeList idList = itemNode.getElementsByTagName("id");
-					if(idList.getLength() > 0) System.out.println();
+					NodeList idList = firstItemElement.getElementsByTagName("id");
 					Element idElement = (Element) idList.item(0);
-					System.out.println(idElement);
-					
 					NodeList textIdList = idElement.getChildNodes();
-														
-					NodeList nameList = itemNode.getElementsByTagName("name");
-					Element nameElement = (Element) nameList.item(0);
 					
-					NodeList textNameList = nameElement.getChildNodes();
-															
-					NodeList descList = itemNode.getElementsByTagName("desc");
-					Element descElement = (Element) descList.item(0);
-					
-					NodeList textDescList = descElement.getChildNodes();
-										
-					NodeList buyPriceList = itemNode.getElementsByTagName("buy");
-					Element buyPriceElement = (Element) buyPriceList.item(0);
-					
-					NodeList textBuyPriceList = buyPriceElement.getChildNodes();
-										
-					NodeList sellPriceList = itemNode.getElementsByTagName("sell");
-					Element sellPriceElement = (Element) sellPriceList.item(0);
-					
-					NodeList textSellPriceList = sellPriceElement.getChildNodes();
-					
-					items.add(new Item(Integer.parseInt(((Node) textIdList).getNodeValue().trim()), new ItemDefinitions()));
+					System.out.println(textIdList);
 				}
 			}
-			
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		} catch (SAXException e) {
